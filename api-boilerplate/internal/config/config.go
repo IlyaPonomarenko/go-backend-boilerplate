@@ -3,6 +3,8 @@ package config
 import (
 	"errors"
 	"os"
+
+	"github.com/joho/godotenv"
 )
 
 // Config contains runtime settings supplied by the environment.
@@ -15,6 +17,12 @@ type Config struct {
 // Load reads configuration and requires an API token outside explicit local
 // development mode, preventing an accidentally unauthenticated deployment.
 func Load() (Config, error) {
+	// Load local development settings when present. godotenv.Load does not
+	// overwrite variables already supplied by the shell or deployment system.
+	if err := godotenv.Load(); err != nil && !os.IsNotExist(err) {
+		return Config{}, err
+	}
+
 	settings := Config{
 		Address:  envOr("API_ADDRESS", ":8080"),
 		Database: envOr("DATABASE_PATH", "./data/api.db"),

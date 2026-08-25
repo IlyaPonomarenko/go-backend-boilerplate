@@ -120,6 +120,23 @@ Invoke-RestMethod `
   -Headers @{ Authorization = "Bearer $env:API_TOKEN" }
 ```
 
+## Postman collection
+
+Import [`postman/go-api-boilerplate.postman_collection.json`](postman/go-api-boilerplate.postman_collection.json) into Postman.
+
+Before sending requests, set the collection variable `apiToken` to the same value as `API_TOKEN` in your `.env` file. Keep `baseUrl` as `http://localhost:8080` unless the server uses a different address.
+
+Run the requests in this order:
+
+1. `Health`
+2. `Create post`
+3. `List posts`
+4. `Get post`
+5. `Update post`
+6. `Delete post`
+
+The `Create post` test automatically saves the returned ID into the `postId` collection variable, so the remaining item requests use the newly created post.
+
 ## How the code works
 
 1. `cmd/api/main.go` loads configuration, opens SQLite, and wires the repository, service, handlers, routes, and server.
