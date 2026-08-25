@@ -1,0 +1,52 @@
+# Go build output
+/bin/
+/build/
+/dist/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Go tooling and coverage
+vendor/
+coverage.out
+coverage.html
+coverprofile.out
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+*.local
+
+# Local application data and databases
+*.db
+*.sqlite
+*.sqlite3
+/data/
+/tmp/
+
+# Logs
+*.log
+logs/
+
+# IDE and editor files
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Temporary and swap files
+*.swp
+*.swo
+*~
